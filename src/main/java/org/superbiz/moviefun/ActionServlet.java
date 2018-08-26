@@ -17,6 +17,7 @@
 package org.superbiz.moviefun;
 
 import org.apache.commons.lang.StringUtils;
+import org.springframework.stereotype.Component;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -29,6 +30,7 @@ import java.util.List;
 /**
  * @version $Revision$ $Date$
  */
+@Component
 public class ActionServlet extends HttpServlet {
 
     private static final long serialVersionUID = -5832176047021911038L;
@@ -50,6 +52,8 @@ public class ActionServlet extends HttpServlet {
 
     private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+
+        System.out.print("WEB-INF/moviefun.jsp working #############" + action);
 
         if ("Add".equals(action)) {
 
@@ -129,7 +133,7 @@ public class ActionServlet extends HttpServlet {
             request.setAttribute("key", key);
             request.setAttribute("field", field);
         }
-
+        System.out.print("WEB-INF/moviefun.jsp working #############");
         request.getRequestDispatcher("WEB-INF/moviefun.jsp").forward(request, response);
     }
 
